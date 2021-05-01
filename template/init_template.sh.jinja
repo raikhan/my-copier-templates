@@ -1,0 +1,19 @@
+if [[ '[[ ! -d .git ]]' ]]
+then
+echo " -> Initializing git"
+git init
+git config --global user.name "[[ author_fullname ]]"
+git config --global user.email "[[ author_email ]]"
+
+echo " -> Installing poetry dependencies"
+poetry install
+
+echo " -> Initializing pretty-errors"
+poetry run python -m pretty_errors -s
+
+echo " -> Submitting first git commit"
+git add .
+git reset -- init_template.sh
+git commit -m "Project initialized from copier template"
+
+fi

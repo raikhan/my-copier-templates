@@ -1,0 +1,45 @@
+# Copier setup file
+
+# CONFIGURATION
+_subdirectory: template
+_templates_suffix: .jinja
+
+_min_copier_version: "5.1.0"
+
+_tasks:
+  - "source init_template.sh"
+  - "rm init_template.sh"
+
+# PROMPT
+project_name:
+  type: str
+  help: Project name
+
+project_type:
+  type: str
+  help: What template to install
+  choices:
+    - package
+    - cli
+
+project_description:
+  type: str
+  help: Project description
+
+author_fullname:
+  type: str
+  help: Your full name
+
+author_email:
+  type: str
+  help: Your email
+
+python_package_distribution_name:
+  type: str
+  help: Your Python package distribution name (for `pip install NAME`)
+  default: "[[ project_name|lower|replace('_', '-')|replace(' ', '-') ]]"
+
+python_package_import_name:
+  type: str
+  help: Your Python package import name (for `import NAME` in Python code)
+  default: "[[ project_name|lower|replace('-', '_')|replace(' ', '_') ]]"
