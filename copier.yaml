@@ -8,16 +8,16 @@ _jinja_extensions:
 
 _tasks:
   - "bash init_template.sh"
-  
+
 # PROMPT
 project_type:
   type: str
   help: Select the type of project
-  choices:  # when adding new templates remember to add them to this list
+  choices: # when adding new templates remember to add them to this list
     - base
     - package
   default: base
-_subdirectory: "{{ project_type }}"  # based on the project type, the template is in a different subdirectory
+_subdirectory: "{{ project_type }}" # based on the project type, the template is in a different subdirectory
 
 project_name:
   type: str
@@ -31,13 +31,13 @@ author_fullname:
   type: str
   help: Your full name
   # NOTE: removing newline from shell output with echo
-  default: "{{ 'echo -n `git config --get user.name`'|shell() }}"
-  
+  default: "{{ 'git config --get user.name | tr -d \\\"\n\\\"'|shell() }}"
+
 author_email:
   type: str
   help: Your email
   # NOTE: removing newline from shell output with echo
-  default: "{{ 'echo -n `git config --get user.email`'|shell() }}"
+  default: "{{ 'git config --get user.email | tr -d \\\"\n\\\"'|shell() }}"
 
 python_package_distribution_name:
   type: str
