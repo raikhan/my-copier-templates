@@ -1,17 +1,16 @@
+# This file is used as a post-copier template task. If the copier was called the first time
+# it will do more work then if it was an update call. To determine which scenario it is,
+# the script checks for the presence of .git folder, which should not be in there if it's a
+# fresh copy of the template
+
 # if .git folder does not exist, this is a initial copy, not an update
 if [[ ! -d .git ]]
 then
 echo " -> Initializing git"
 git init
 
-echo " -> Installing poetry dependencies"
-poetry install
-
-echo " -> Initializing pretty-errors"
-poetry run python -m pretty_errors -s
-
-echo " -> Installing pre-commit git hooks"
-pre-commit install
+echo " ---> Initializing dev environment"
+source init_dev_tools.sh
 
 echo " -> Submitting first git commit"
 git add .
