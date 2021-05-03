@@ -1,6 +1,5 @@
-
 # if .git folder does not exist, this is a initial copy, not an update
-if [[ '[[ ! -d .git ]]' ]]
+if [[ ! -d .git ]]
 then
 echo " -> Initializing git"
 git init
@@ -24,7 +23,11 @@ else
 echo " -> Poetry updating dependencies"
 poetry update
 
-echo " -> Installing pre-commit git hooks"
+echo " -> Updating pre-commit git hooks"
 pre-commit install
 
 fi
+
+# delete yourself after running
+rm init_template.sh
+echo "Deleted init shell script"
