@@ -1,7 +1,6 @@
 # Copier setup file
 
 # CONFIGURATION
-_subdirectory: template
 _templates_suffix: .jinja
 
 _jinja_extensions:
@@ -11,6 +10,15 @@ _tasks:
   - "bash init_template.sh"
   
 # PROMPT
+project_type:
+  type: str
+  help: Select the type of project
+  choices:  # when adding new templates remember to add them to this list
+    - base
+    - package
+  default: base
+_subdirectory: "{{ project_type }}"  # based on the project type, the template is in a different subdirectory
+
 project_name:
   type: str
   help: Project name

@@ -2,7 +2,8 @@
 
 A set of [Copier](https://github.com/copier-org/copier) templates for starting new projects. I set these up for my personal use, but feel free to fork them if they speak to you
 
-The main branch is the base template and more specific models are in additional branches. That allows me to update specific templates based on base changes using Git merges
+There are multiple templates in this repo and which one is installed is selected by the first prompt after the copier command. The idea is to have a base Python project setup in 'base' template and more specialized one, that inherit from it, in other folders. 
+TODO: automate the updates from 'base' being applied to all other templates
 
 ## Prerequisites
 
@@ -20,7 +21,7 @@ The main branch is the base template and more specific models are in additional 
    ```shell
    pipx inject copier jinja2_shell_extension
    ```
-6. (Optional) Clone the repo: specific templates are in branches and cannot be copier'd directly from GitHub. If you want to use any of them, clone the repo, change the branch and then run the copier command
+
 
 ## Packages used in the base template
 

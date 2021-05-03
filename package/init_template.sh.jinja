@@ -1,0 +1,33 @@
+# if .git folder does not exist, this is a initial copy, not an update
+if [[ ! -d .git ]]
+then
+echo " -> Initializing git"
+git init
+
+echo " -> Installing poetry dependencies"
+poetry install
+
+echo " -> Initializing pretty-errors"
+poetry run python -m pretty_errors -s
+
+echo " -> Installing pre-commit git hooks"
+pre-commit install
+
+echo " -> Submitting first git commit"
+git add .
+git reset -- init_template.sh
+git commit -m "Project initialized from copier template"
+
+# stuff to do on the update
+else
+echo " -> Poetry updating dependencies"
+poetry update
+
+echo " -> Updating pre-commit git hooks"
+pre-commit install
+
+fi
+
+# delete yourself after running
+rm init_template.sh
+echo "Deleted init shell script"
