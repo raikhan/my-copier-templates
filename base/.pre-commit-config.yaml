@@ -26,6 +26,12 @@ repos:
         language: system
         types: [python]
         require_serial: true
+      - id: blacken-docs
+        name: blacken-docs
+        entry: blacken-docs
+        files: .*\.md|.*\.rst
+        types: [text]
+        language: system
       - id: isort
         name: isort
         entry: poetry run isort
